@@ -52,6 +52,12 @@ export const DashboardMenu = [
   },
   {
     id: uuid(),
+    title: 'Users',
+    icon: 'users',
+    link: '/pages/users'
+  },
+  {
+    id: uuid(),
     title: 'Pages',
     icon: 'layers',
     children: [
