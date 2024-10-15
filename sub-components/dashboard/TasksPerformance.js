@@ -1,18 +1,19 @@
-'use client'
+'use client';
 import React from "react";
 import Link from 'next/link';
 import { Card, Dropdown } from 'react-bootstrap';
 import { MoreVertical } from 'react-feather';
 import dynamic from 'next/dynamic';
+
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-
-const Charts = () => {
-    const perfomanceChartSeries = [100, 78, 89];
-    const perfomanceChartOptions = {
-        dataLabels: { enabled: !1 },
-        labels: ['Direct', 'Referral', 'Organic'],
-        colors: ['#28a745', '#ffc107', '#dc3545'],
+const LabBookingsChart = () => {
+    // Updated data for lab bookings
+    const labBookingsSeries = [120, 80, 30]; // Example values for completed, pending, and canceled bookings
+    const labBookingsOptions = {
+        dataLabels: { enabled: false },
+        labels: ['Completed', 'Pending', 'Canceled'],
+        colors: ['#28a745', '#ffc107', '#dc3545'], // Green for completed, yellow for pending, red for canceled
         plotOptions: {
             radialBar: {
                 startAngle: -168,
@@ -21,7 +22,7 @@ const Charts = () => {
                     size: '55%',
                 },
                 track: {
-                    background: 'transaprent',
+                    background: 'transparent',
                 },
                 dataLabels: {
                     show: false,
@@ -51,7 +52,7 @@ const Charts = () => {
     };
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-        (<Link
+        <Link
             href=""
             ref={ref}
             onClick={(e) => {
@@ -60,7 +61,7 @@ const Charts = () => {
             }}
             className="text-muted text-primary-hover">
             {children}
-        </Link>)
+        </Link>
     ));
 
     CustomToggle.displayName = 'CustomToggle';
@@ -72,15 +73,9 @@ const Charts = () => {
                     <MoreVertical size="15px" className="text-muted" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu align={'end'}>
-                    <Dropdown.Item eventKey="1">
-                        Action
-                    </Dropdown.Item>
-                    <Dropdown.Item eventKey="2">
-                        Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item eventKey="3">
-                        Something else here
-                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="1">View All Bookings</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">Generate Report</Dropdown.Item>
+                    <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         );
@@ -91,39 +86,39 @@ const Charts = () => {
             <Card.Body>
                 <div className="d-flex align-items-center justify-content-between">
                     <div>
-                        <h4 className="mb-0">Tasks Performance </h4>
+                        <h4 className="mb-0">Lab Bookings Report</h4>
                     </div>
                     <ActionMenu />
                 </div>
                 <div className="mb-8">
                     <Chart
-                        options={perfomanceChartOptions}
-                        series={perfomanceChartSeries}
+                        options={labBookingsOptions}
+                        series={labBookingsSeries}
                         type="radialBar"
                         width="100%"
                     />
                 </div>
-                {/* icon with content  */}
+                {/* icon with content */}
                 <div className="d-flex align-items-center justify-content-around">
                     <div className="text-center">
                         <i className="fe fe-check-circle text-success fs-3"></i>
-                        <h1 className="mt-3  mb-1 fw-bold">76%</h1>
-                        <p>Completed</p>
+                        <h1 className="mt-3 mb-1 fw-bold">{labBookingsSeries[0]}%</h1>
+                        <p>Completed Bookings</p>
                     </div>
                     <div className="text-center">
                         <i className="fe fe-trending-up text-warning fs-3"></i>
-                        <h1 className="mt-3  mb-1 fw-bold">32%</h1>
-                        <p>In-Progress</p>
+                        <h1 className="mt-3 mb-1 fw-bold">{labBookingsSeries[1]}%</h1>
+                        <p>Pending Bookings</p>
                     </div>
                     <div className="text-center">
                         <i className="fe fe-trending-down text-danger fs-3"></i>
-                        <h1 className="mt-3  mb-1 fw-bold">13%</h1>
-                        <p>Behind</p>
+                        <h1 className="mt-3 mb-1 fw-bold">{labBookingsSeries[2]}%</h1>
+                        <p>Canceled Bookings</p>
                     </div>
                 </div>
             </Card.Body>
         </Card>
-    )
+    );
 }
 
-export default Charts
+export default LabBookingsChart;

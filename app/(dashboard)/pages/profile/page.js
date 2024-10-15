@@ -8,11 +8,7 @@ import { PageHeading } from 'widgets'
 // import sub components
 import {
   AboutMe,
-  ActivityFeed,
-  MyTeam,
   ProfileHeader,
-  ProjectsContributions,
-  RecentFromBlog
 } from 'sub-components'
 
 const Profile = () => {
@@ -25,27 +21,13 @@ const Profile = () => {
       <ProfileHeader />
 
       {/* content */}
-      <div className="py-6">
+      <div className="py-3">
         <Row>
 
           {/* About Me */}
           <AboutMe />
 
-          {/* Projects Contributions */}
-          <ProjectsContributions />
-
-          {/* Recent From Blog */}
-          <RecentFromBlog />
-
-          <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
-
-            {/* My Team */}
-            <MyTeam />
-
-            {/* Activity Feed */}
-            <ActivityFeed />
-
-          </Col>
+          
         </Row>
       </div>
 

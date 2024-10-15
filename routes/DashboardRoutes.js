@@ -38,23 +38,30 @@ export const DashboardMenu = [
     icon: 'box',
     link: '/pages/assets'
   },
+  
   {
     id: uuid(),
-    title: 'Classes',
+    title: 'Labs',
     icon: 'youtube',
     link: '/pages/classes'
   },
   {
     id: uuid(),
-    title: 'Charts',
-    icon: 'activity',
-    link: '/pages/charts'
+    title: 'Users',
+    icon: 'users',
+    children: [
+      { id: uuid(), link: '/pages/student', name: 'Student' },
+      { id: uuid(), link: '/pages/staff', name: 'Staff' },
+    ]
   },
   {
     id: uuid(),
-    title: 'Users',
-    icon: 'users',
-    link: '/pages/users'
+    title: 'Reports',
+    icon: 'activity',
+    children: [
+      { id: uuid(), link: '/pages/charts', name: 'Charts' },
+      { id: uuid(), link: '/pages/bookings', name: 'Bookings' },
+    ]
   },
   {
     id: uuid(),
@@ -63,8 +70,6 @@ export const DashboardMenu = [
     children: [
       { id: uuid(), link: '/pages/profile', name: 'Profile' },
       { id: uuid(), link: '/pages/settings', name: 'Settings' },
-      { id: uuid(), link: '/pages/billing', name: 'Billing' },
-      { id: uuid(), link: '/pages/pricing', name: 'Pricing' }
     ]
   },
   {
@@ -77,12 +82,20 @@ export const DashboardMenu = [
       { id: uuid(), link: '/authentication/forget-password', name: 'Forget Password' }
     ]
   },
-  {
-    id: uuid(),
-    title: 'Layouts',
-    icon: 'layout',
-    link: '/layout-vertical'
-  },
+  // {
+  //   id: uuid(),
+  //   title: 'User Page',
+  //   icon: 'lock',
+  //   children: [
+  //     { id: uuid(), link: '/Pages/downtime', name: 'DownTime' },
+  //     { id: uuid(), link: '/Pages/labs', name: 'Labs' },
+  //     { id: uuid(), link: '/Pages/logout', name: 'Log Out' },
+  //     { id: uuid(), link: '/Pages/profile', name: 'Profile' },
+  //     { id: uuid(), link: '/Pages/requests', name: 'Requests' },
+  //     { id: uuid(), link: '/Pages/timetable', name: 'Time Table' },
+  //   ]
+  // },
+  
   {
     id: uuid(),
     title: 'Documentation',
@@ -94,18 +107,19 @@ export const DashboardMenu = [
     icon: 'clipboard',
     link: '/documentation'
   },
-  {
-    id: uuid(),
-    title: 'Changelog',
-    icon: 'git-pull-request',
-    link: '/changelog'
-  },
+  
   /*{
     id: uuid(),
     title: 'Download',
     icon: 'download',
     link: 'https://codescandy.gumroad.com/l/dashui-nextjs'
   }*/
+    // {
+    //   id: uuid(),
+    //   title: 'Add Item',  // New route for AddItem page
+    //   icon: 'plus-circle', // Optional, you can assign an icon
+    //   link: '/pages/assets/addItem' // Link to AddItem page
+    // },
 ];
 
 export default DashboardMenu;

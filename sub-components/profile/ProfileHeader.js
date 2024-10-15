@@ -9,7 +9,7 @@ const ProfileHeader = () => {
         {/* Bg */}
         <div className="pt-20 rounded-top" style={{ background: 'url(/images/background/profile-cover.jpg) no-repeat', backgroundSize: 'cover' }}>
         </div>
-        <div className="bg-white rounded-bottom smooth-shadow-sm ">
+        <div className="bg-white rounded-bottom smooth-shadow-sm">
           <div className="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
             <div className="d-flex align-items-center">
               {/* avatar */}
@@ -21,44 +21,18 @@ const ProfileHeader = () => {
               </div>
               {/* text */}
               <div className="lh-1">
-                <h2 className="mb-0">Jitu Chauhan
-                  <Link href="#!" className="text-decoration-none" data-bs-toggle="tooltip" data-placement="top" title="" data-original-title="Beginner">
-                  </Link>
-                </h2>
-                <p className="mb-0 d-block">@imjituchauhan</p>
+                <h2 className="mb-0">Admin</h2>
+                <p className="mb-0 d-block">admin@email</p>
               </div>
             </div>
             <div>
               <Link href="#" className="btn btn-outline-primary d-none d-md-block">Edit Profile</Link>
             </div>
           </div>
-          {/* nav */}
-          <ul className="nav nav-lt-tab px-4" id="pills-tab" role="tablist">
-            <li className="nav-item">
-              <Link className="nav-link active" href="#">Overview</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="#">Project</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="#">Files</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="#">Teams</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="#">
-                Followers
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="#">Activity</Link>
-            </li>
-          </ul>
         </div>
       </Col>
     </Row>
   )
 }
 
-export default ProfileHeader
+export default ProfileHeader;

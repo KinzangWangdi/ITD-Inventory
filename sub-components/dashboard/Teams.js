@@ -1,16 +1,33 @@
 // import node module libraries
 import React from "react";
 import Link from 'next/link';
-import { Card, Table, Dropdown, Image } from 'react-bootstrap';
+import { Card, Dropdown } from 'react-bootstrap';
 import { MoreVertical } from 'react-feather';
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    ResponsiveContainer
+} from 'recharts';
 
-// import required data files
-import TeamsData from "data/dashboard/TeamsData";
+// Example data representing booking trends over time
+const BookingTrendsData = [
+    { date: 'Week 1', bookings: 20 },
+    { date: 'Week 2', bookings: 35 },
+    { date: 'Week 3', bookings: 40 },
+    { date: 'Week 4', bookings: 25 },
+    { date: 'Week 5', bookings: 60 },
+    { date: 'Week 6', bookings: 55 },
+];
 
-const Teams = () => {
+const BookingTrendsReport = () => {
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-        (<Link
+        <Link
             href=""
             ref={ref}
             onClick={(e) => {
@@ -19,7 +36,7 @@ const Teams = () => {
             }}
             className="text-muted text-primary-hover">
             {children}
-        </Link>)
+        </Link>
     ));
 
     CustomToggle.displayName = 'CustomToggle';
@@ -32,13 +49,13 @@ const Teams = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu align={'end'}>
                     <Dropdown.Item eventKey="1">
-                        Action
+                        View Details
                     </Dropdown.Item>
                     <Dropdown.Item eventKey="2">
-                        Another action
+                        Download Report
                     </Dropdown.Item>
                     <Dropdown.Item eventKey="3">
-                        Something else here
+                        Refresh Data
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
@@ -47,45 +64,24 @@ const Teams = () => {
 
     return (
         <Card className="h-100">
-            <Card.Header className="bg-white py-4">
-                <h4 className="mb-0">Teams </h4>
-            </Card.Header>
-            <Table responsive className="text-nowrap">
-                <thead className="table-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Last Activity</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {TeamsData.map((item, index) => {
-                        return (
-                            <tr key={index}>
-                                <td className="align-middle">
-                                    <div className="d-flex align-items-center">
-                                        <div>
-                                            <Image src={item.image} alt="" className="avatar-md avatar rounded-circle" />
-                                        </div>
-                                        <div className="ms-3 lh-1">
-                                            <h5 className=" mb-1">{item.name}</h5>
-                                            <p className="mb-0">{item.email}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="align-middle">{item.role}</td>
-                                <td className="align-middle">{item.lastActivity}</td>
-                                <td className="align-middle">
-                                    <ActionMenu />
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </Table>
+            <Card.Body>
+                <div className="d-flex align-items-center justify-content-between">
+                    <h4 className="mb-0">Booking Trends Report</h4>
+                    <ActionMenu />
+                </div>
+                <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={BookingTrendsData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="date" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="bookings" stroke="#ff7300" />
+                    </LineChart>
+                </ResponsiveContainer>
+            </Card.Body>
         </Card>
-    )
+    );
 }
 
-export default Teams
+export default BookingTrendsReport;

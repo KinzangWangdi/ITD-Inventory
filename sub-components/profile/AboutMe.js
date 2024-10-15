@@ -1,44 +1,75 @@
-// import node module libraries
+'use client';
+
+// Import necessary libraries
 import { Col, Row, Card } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 
-const AboutMe = () => {
-    return (
-        <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
-            {/* card */}
-            <Card>
-                {/* card body */}
-                <Card.Body>
-                    {/* card title */}
-                    <Card.Title as="h4">About Me</Card.Title>
-                    <span className="text-uppercase fw-medium text-dark fs-5 ls-2">Bio</span>
-                    <p className="mt-2 mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen disse var ius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
-                    </p>
-                    <Row>
-                        <Col xs={12} className="mb-5">
-                            <h6 className="text-uppercase fs-5 ls-2">Position</h6>
-                            <p className="mb-0">Theme designer at Bootstrap.</p>
-                        </Col>
-                        <Col xs={6} className="mb-5">
-                            <h6 className="text-uppercase fs-5 ls-2">Phone </h6>
-                            <p className="mb-0">+32112345689</p>
-                        </Col>
-                        <Col xs={6} className="mb-5">
-                            <h6 className="text-uppercase fs-5 ls-2">Date of Birth </h6>
-                            <p className="mb-0">01.10.1997</p>
-                        </Col>
-                        <Col xs={6}>
-                            <h6 className="text-uppercase fs-5 ls-2">Email </h6>
-                            <p className="mb-0">Dashui@gmail.com</p>
-                        </Col>
-                        <Col xs={6}>
-                            <h6 className="text-uppercase fs-5 ls-2">Location</h6>
-                            <p className="mb-0">Ahmedabad, India</p>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </Col>
-    )
-}
+// Profile component for both user and admin
+const Profile = ({ user }) => {
+  const [role, setRole] = useState('');
+  const [profileData, setProfileData] = useState({
+    dob: user?.dob || '01.10.1997',
+    email: user?.email || 'user@example.com',
+    phone: user?.phone || '+1234567890',
+    location: user?.location || 'Not Available',
+    gender: user?.gender || 'Not Specified', // Add gender field
+    bio: user?.bio || 'This section can include a short bio or introduction.',
+  });
 
-export default AboutMe
+  // Simulate fetching the user role (can be replaced with actual API or auth context)
+  useEffect(() => {
+    setRole(user?.role || 'User'); // Default to 'User' if no role is provided
+  }, [user]);
+
+  return (
+    <Row className="justify-content-center mt-5">
+      <Col xl={8} lg={10} md={12}>
+        <Card className="shadow-sm">
+          <Card.Body>
+            {/* Profile header with role */}
+            <div className="mb-4">
+              <h4 className="mb-1">{role} Profile</h4>
+            </div>
+
+            {/* Profile Bio */}
+            <div className="mb-4">
+              <h6 className="text-uppercase fw-bold text-muted">Bio</h6>
+              <p>{profileData.bio}</p>
+            </div>
+
+            {/* Profile Details */}
+            <Row>
+              <Col xs={12} md={6} className="mb-4">
+                <h6 className="text-uppercase fw-bold text-muted">Gender</h6>
+                <p>{profileData.gender}</p>
+              </Col>
+              <Col xs={12} md={6} className="mb-4">
+                <h6 className="text-uppercase fw-bold text-muted">Role</h6>
+                <p>{role}</p>
+              </Col>
+              <Col xs={12} md={6} className="mb-4">
+                <h6 className="text-uppercase fw-bold text-muted">Date of Birth</h6>
+                <p>{profileData.dob}</p>
+              </Col>
+              <Col xs={12} md={6} className="mb-4">
+                <h6 className="text-uppercase fw-bold text-muted">Email</h6>
+                <p>{profileData.email}</p>
+              </Col>
+              <Col xs={12} md={6} className="mb-4">
+                <h6 className="text-uppercase fw-bold text-muted">Phone</h6>
+                <p>{profileData.phone}</p>
+              </Col>
+              <Col xs={12} md={6} className="mb-4">
+                <h6 className="text-uppercase fw-bold text-muted">Location</h6>
+                <p>{profileData.location}</p>
+              </Col>
+            </Row>
+
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  );
+};
+
+export default Profile;

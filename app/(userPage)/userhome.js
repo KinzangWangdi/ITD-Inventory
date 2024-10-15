@@ -8,13 +8,12 @@ import { Container, Col, Row } from 'react-bootstrap';
 import { StatRightTopIcon } from "widgets";
 
 // import sub components
-import { ActiveProjects, Teams, TasksPerformance } from "sub-components";
-
+import { ActiveProjects, Teams, 
+    TasksPerformance, FaultReportTrends, BookingStatus
+} from "sub-components";
+ 
 // import required data files
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
-
-// import FaultReportTrends component
-import FaultReportTrends from "sub-components/dashboard/FaultReportTrends";  // Adjust path if needed
 
 const Home = () => {
     return (
@@ -27,11 +26,11 @@ const Home = () => {
                         <div>
                             <div className="d-flex justify-content-between align-items-center">
                                 <div className="mb-2 mb-lg-0">
-                                    <h3 className="mb-0 text-white">Dashboard</h3>
+                                    <h3 className="mb-0  text-white">Dashboard</h3>
                                 </div>
-                                {/* <div>
+                                <div>
                                     <Link href="#" className="btn btn-white">Add Assets</Link>
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </Col>
@@ -40,11 +39,11 @@ const Home = () => {
                             <Col xl={3} lg={6} md={12} xs={12} className="mt-6" key={index}>
                                 <StatRightTopIcon info={item} />
                             </Col>
-                        );
+                        )
                     })}
                 </Row>
 
-                {/* Active Projects */}
+                {/* Active Projects  */}
                 <ActiveProjects />
 
                 <Row className="my-6">
@@ -60,15 +59,18 @@ const Home = () => {
                 </Row>
 
                 <Row className="my-6">
+                     {/* Fault Booking Status */}
+                     <Col xl={8} lg={12} md={12} xs={12}>
+                        <BookingStatus />
+                    </Col>
                     {/* card */}
-                    
+                    <Col xl={4} lg={12} md={12} xs={12} className="mb-6 mb-xl-0">
                         {/* Teams */}
                         <Teams />
-                   
+                    </Col>
                 </Row>
             </Container>
         </Fragment>
-    );
-};
-
+    )
+}
 export default Home;

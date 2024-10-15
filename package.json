@@ -1,10 +1,10 @@
 {
-  "name": "dashui-free-nextjs-admin-template",
+  "name": "ITD_INVENTORY",
   "version": "1.1.0",
   "private": true,
   "author": {
-    "name": "codescandy",
-    "url": "https://codescandy.com"
+    "name": "Group 5",
+    "url": ""
   },
   "keywords": [
     "react",
@@ -29,11 +29,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.25.7",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.2",
     "@vercel/analytics": "^1.0.1",
     "apexcharts": "^3.41.1",
+    "babel-loader": "^9.2.1",
     "bootstrap": "^5.3.1",
+    "dayjs": "^1.11.13",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "js-cookie": "^3.0.5",
     "next": "^14.2.13",
     "node-sass": "^9.0.0",
     "prism-react-renderer": "^2.0.6",
@@ -41,12 +48,14 @@
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",
+    "react-calendar": "^5.0.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "react-feather": "^2.0.10",
     "react-responsive": "^9.0.2",
     "react-syntax-highlighter": "^15.5.0",
+    "recharts": "^2.12.7",
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
     "simplebar": "^6.2.5",
